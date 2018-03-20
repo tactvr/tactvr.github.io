@@ -1,0 +1,3 @@
+function generateSchedule(containerLocator, scheduleArray) {
+    
+}
