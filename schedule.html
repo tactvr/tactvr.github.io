@@ -21,10 +21,25 @@
     <script type="text/javascript" src="schedule.js"></script>
     <script type="text/javascript">
 $(function() {
-    var msrEvents = [
-        {name:"Event #1", date: "March 24", championship: true, axware_name: "slalom1", msr_id:"A5B3A41E-BCC7-E7A1-C4F98A8DE348CDD7", },
+    var scheduledEvents = [
+        {name:"School", displayDate: "March 2-4", eventDate: "2018-03-04", championship: false, axwareName: "drivingschool", msr_id:"76C3279B-DE2E-7F6C-54007C4683640195", },
+        {name:"Test and Tune", displayDate: "March 11", eventDate: "2018-03-11", championship: false, axwareName: false, msr_id:"A2EEFDEB-C28E-648D-144FBC04B0150B69", },
+        {name:"Event #1", displayDate: "March 24", eventDate: "2018-03-24", championship: true,  axwareName: "slalom1", msr_id:"A5B3A41E-BCC7-E7A1-C4F98A8DE348CDD7", },
+        {name:"Event #2", displayDate: "April 14", eventDate: "2018-04-14", championship: true,  axwareName: "slalom2", msr_id:"82918A9F-A8FE-E1E0-B85958F55152AC50", },
+        {name:"Event #3", displayDate: "May 12", eventDate: "2018-05-12", championship: true,  axwareName: "slalom3", msr_id:"829F47E6-C499-E4E7-1B257AD1AA7916FE", },
+        {name:"Event #4", displayDate: "June 2", eventDate: "2018-06-02", championship: true,  axwareName: "slalom4", msr_id:"", },
+        {name:"Event #5", displayDate: "June 23", eventDate: "2018-06-23", championship: true,  axwareName: "slalom5", msr_id:"", },
+        {name:"Event #6", displayDate: "July 21", eventDate: "2018-07-21", championship: true,  axwareName: "slalom6", msr_id:"", },
+        {name:"Test and Tune", displayDate: "August 18", eventDate: "2018-08-18", championship: false,  axwareName: false, msr_id:"", },
+        {name:"Event #7", displayDate: "August 19", eventDate: "2018-08-19", championship: true,  axwareName: "slalom7", msr_id:"", },
+        {name:"TAC Autocross School", displayDate: "September 29", eventDate: "2018-09-29", championship: false,  axwareName: false, msr_id:"", },
+        {name:"Event #8", displayDate: "September 30", eventDate: "2018-09-30", championship: true,  axwareName: "slalom8", msr_id:"", },
+        {name:"Event #9", displayDate: "October 21", eventDate: "2018-10-21", championship: true,  axwareName: "slalom9", msr_id:"", },
+        {name:"Event #10", displayDate: "November 3", eventDate: "2018-11-03", championship: true,  axwareName: "slalom10", msr_id:"", },
+        {name:"Event #11", displayDate: "November 17", eventDate: "2018-11-17", championship: true,  axwareName: "slalom11", msr_id:"", },
+        {name:"HoHoHoooo Event #12", displayDate: "December 1", eventDate: "2018-12-01", championship: true,  axwareName: "slalom12", msr_id:"", },
     ];
-    generateSchedule("#generateHere", msrEvents);
+    generateSchedule("#generateHere", scheduledEvents);
 });
     </script>
     <style>
@@ -41,16 +56,19 @@ $(function() {
         .eventRow {
             padding: 5px;
         }
+        .championshipEvent {
+            background-color: rgb(201, 255, 218);
+        }
     </style>
 </head>
 <body>
     <div class="eventTable">
         <div class="pure-g headerRow">
-            <div class="pure-u-1-3">Date</div>
-            <div class="pure-u-1-3">Event</div>
-            <div class="pure-u-1-3">Details</div>
+            <div class="pure-u-4-24">Date</div>
+            <div class="pure-u-10-24">Event</div>
+            <div class="pure-u-8-24">Details</div>
         </div>
-        <div id="generateHere">FIXME</div>
+        <div id="generateHere">...</div>
     </div>
 </body>
 </html>
