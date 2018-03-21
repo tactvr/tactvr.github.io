@@ -1,4 +1,6 @@
 var NOW = new Date();
+//var NOW = new Date("2018-03-24");
+var YEAR = "2018";
 
 function generateSchedule(containerLocator, scheduleArray) {
     var jqContainer = $(containerLocator).empty();
@@ -52,7 +54,7 @@ function makeRow(rowData){
         class: "pure-u-8-24"
     }).appendTo(row);
 
-    if (rowData.eventDateJs < NOW && rowData.axwareName) {
+    if (rowData.eventDateJs <= NOW && rowData.axwareName) {
         attachResultLinks(rowData.detailsJqElement, rowData.axwareName);
     }
     return row;
@@ -60,15 +62,13 @@ function makeRow(rowData){
 
 function populateFromMsr(eventsWithMsrIds) {
     console.log(eventsWithMsrIds);
-    //$.ajax('https://api.motorsportreg.com/rest/calendars/organization/2090ED02-A19B-3A7B-C58CBD1982CDCC4E.json?start=2018-01-01&end=2019-01-01', {
-    $.ajax('https://api.motorsportreg.com/rest/calendars/organization/2090ED02-A19B-3A7B-C58CBD1982CDCC4E.json', {
+    $.ajax('https://api.motorsportreg.com/rest/calendars/organization/2090ED02-A19B-3A7B-C58CBD1982CDCC4E.json?start=@YEAR@-01-01&end=@YEAR@-12-31'.replace(/@YEAR@/g, YEAR), {
         async: true,
         cache: false,
         dataType: 'json',
     }).done(
         function(json){
             $.each(json.response.events, function(key, value){
-                console.log(value);
                 var msrId = value.id;
                 if (eventsWithMsrIds[msrId]){
                     var link = $("<a>", {
