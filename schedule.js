@@ -4,10 +4,10 @@ var NOW = new Date();
 var YEAR = "2018";
 
 var COLUMN_CLASSES = [
-    "pure-u-5-24",
+    "pure-u-3-24",
     "pure-u-6-24",
-    "pure-u-8-24",
-    "pure-u-5-24",
+    "pure-u-11-24",
+    "pure-u-4-24",
 ];
 
 $(function() {
@@ -133,6 +133,7 @@ function populateFromMsr(eventsWithMsrIds) {
                             regElement.append(" (closes on " + end.toLocaleDateString() + ") ");
                         } else {
                             link.text("Registration Closed");
+                            regElement.append(" ");
                         }
                         var msrMetadataElement = $("<span>").append("<span class='fas fa-spinner fa-pulse'>");
                         regElement.append(msrMetadataElement);
