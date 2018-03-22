@@ -4,9 +4,10 @@ var NOW = new Date();
 var YEAR = "2018";
 
 var COLUMN_CLASSES = [
+    "pure-u-5-24",
     "pure-u-6-24",
-    "pure-u-10-24",
-    "pure-u-6-24",
+    "pure-u-8-24",
+    "pure-u-5-24",
 ];
 
 $(function() {
@@ -51,7 +52,8 @@ function generateHeaderRow() {
     var col = 0;
     $("<div>", {class: COLUMN_CLASSES[col++], text:"Date"}).appendTo(headerRow);
     $("<div>", {class: COLUMN_CLASSES[col++], text: "Event"}).appendTo(headerRow);
-    $("<div>", {class: COLUMN_CLASSES[col++], text: "Details"}).appendTo(headerRow);
+    $("<div>", {class: COLUMN_CLASSES[col++], text: "Registration"}).appendTo(headerRow);
+    $("<div>", {class: COLUMN_CLASSES[col++], text: "Results"}).appendTo(headerRow);
     return headerRow;
 }
 
@@ -62,7 +64,7 @@ function populateRegistered(jqElement, msrEventGUID) {
         dataType: 'json',
     }).done(
         function(json){
-            jqElement.attr("class", "");// kill the spinner
+            jqElement.html("");
             jqElement.text('[' + json.response.recordset.total + ' registered]');
         }
     );
@@ -90,12 +92,16 @@ function makeRow(rowData){
         class: COLUMN_CLASSES[col++],
         text: rowData.name,
     }));
-    rowData.detailsJqElement = $("<div>", {
+    rowData.registrationJqElement = $("<div>", {
+        class: COLUMN_CLASSES[col++]
+    }).appendTo(row);
+
+    rowData.resultsJqElement = $("<div>", {
         class: COLUMN_CLASSES[col++]
     }).appendTo(row);
 
     if (rowData.eventDateJs <= NOW && rowData.axwareName) {
-        attachResultLinks(rowData.detailsJqElement, rowData.axwareName);
+        attachResultLinks(rowData.resultsJqElement, rowData.axwareName);
     }
     return row;
 }
@@ -109,18 +115,29 @@ function populateFromMsr(eventsWithMsrIds) {
         function(json){
             $.each(json.response.events, function(key, value){
                 var msrId = value.id;
-                if (eventsWithMsrIds[msrId]){
-                    var link = $("<a>", {
-                        href: value.detailuri,
-                        text: "Registration"
-                    });
-                    eventsWithMsrIds[msrId].detailsJqElement.html("");
-                    eventsWithMsrIds[msrId].detailsJqElement.append(link);
-                    eventsWithMsrIds[msrId].detailsJqElement.append(" ");
-                    if (new Date(value.registration.end) < NOW){
-                        link.text("Registration Closed");
+                if (eventsWithMsrIds[msrId]) {
+                    var regElement = eventsWithMsrIds[msrId].registrationJqElement.html("");
+                    var start = new Date(value.registration.start);
+                    var end = new Date(value.registration.end);
+                    if (start > NOW) {
+                        regElement.text(
+                            "Registration opens on " + start.toLocaleDateString()
+                        );
+                    } else { 
+                        var link = $("<a>", {
+                            href: value.detailuri,
+                        });
+                        regElement.append(link);
+                        if (end > NOW) {
+                            link.text("Register Now");
+                            regElement.append(" (closes on " + end.toLocaleDateString() + ") ");
+                        } else {
+                            link.text("Registration Closed");
+                        }
+                        var msrMetadataElement = $("<span>").append("<span class='fas fa-spinner fa-pulse'>");
+                        regElement.append(msrMetadataElement);
+                        populateRegistered(msrMetadataElement, msrId);
                     }
-                    populateRegistered($("<span class='fas fa-spinner fa-pulse'>").appendTo(eventsWithMsrIds[msrId].detailsJqElement), msrId);
                 }
             });
         }
