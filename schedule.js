@@ -65,7 +65,7 @@ function populateRegistered(jqElement, msrEventGUID) {
     }).done(
         function(json){
             jqElement.html("");
-            jqElement.text('[' + json.response.recordset.total + ' registered]');
+            jqElement.text('[' + json.response.recordset.total + '&nbsp;registered]');
         }
     );
 }
@@ -130,7 +130,7 @@ function populateFromMsr(eventsWithMsrIds) {
                         regElement.append(link);
                         if (end > NOW) {
                             link.text("Register Now");
-                            regElement.append(" (closes on " + end.toLocaleDateString() + ") ");
+                            regElement.append(" (closes&nbsp;on&nbsp;" + end.toLocaleDateString() + ") ");
                         } else {
                             link.text("Registration Closed");
                             regElement.append(" ");
