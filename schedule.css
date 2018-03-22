@@ -8,11 +8,11 @@
 .eventExample {
     margin: 0 auto;
     display: inline-block;
-    border: 1px solid black;
-    margin-bottom: 3px;
+    border: 1px solid grey;
+    margin-top: 3px;
 }
 .headerRow {
-    border-color:black;
+    border-color:grey;
     border-width: 1px 0px 1px 0px;
     border-style: solid;
     font-weight: bold;
