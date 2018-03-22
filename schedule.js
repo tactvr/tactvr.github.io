@@ -65,7 +65,7 @@ function populateRegistered(jqElement, msrEventGUID) {
     }).done(
         function(json){
             jqElement.html("");
-            jqElement.text('[' + json.response.recordset.total + '&nbsp;registered]');
+            jqElement.append('[' + json.response.recordset.total + '&nbsp;registered]');
         }
     );
 }
