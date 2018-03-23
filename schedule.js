@@ -121,7 +121,7 @@ function populateFromMsr(eventsWithMsrIds) {
                     var end = new Date(value.registration.end + "-0000");
                     if (start > NOW) {
                         regElement.text(
-                            "Registration opens on " + start.toLocaleDateString()
+                            "Preregistration opens on " + start.toLocaleDateString()
                         );
                     } else { 
                         var link = $("<a>", {
@@ -129,10 +129,10 @@ function populateFromMsr(eventsWithMsrIds) {
                         });
                         regElement.append(link);
                         if (end > NOW) {
-                            link.text("Register Now");
+                            link.text("Preregister Now");
                             regElement.append(" (closes&nbsp;on&nbsp;" + end.toLocaleDateString() + ") ");
                         } else {
-                            link.text("Registration Closed");
+                            link.text("Preregistration Closed");
                             regElement.append(" ");
                         }
                         var msrMetadataElement = $("<span>").append("<span class='fas fa-spinner fa-pulse'>");
