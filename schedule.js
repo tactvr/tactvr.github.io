@@ -117,8 +117,8 @@ function populateFromMsr(eventsWithMsrIds) {
                 var msrId = value.id;
                 if (eventsWithMsrIds[msrId]) {
                     var regElement = eventsWithMsrIds[msrId].registrationJqElement.html("");
-                    var start = new Date(value.registration.start);
-                    var end = new Date(value.registration.end);
+                    var start = new Date(value.registration.start + "-0000");
+                    var end = new Date(value.registration.end + "-0000");
                     if (start > NOW) {
                         regElement.text(
                             "Registration opens on " + start.toLocaleDateString()
