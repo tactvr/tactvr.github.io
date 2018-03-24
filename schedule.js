@@ -126,6 +126,7 @@ function populateFromMsr(eventsWithMsrIds) {
                     } else { 
                         var link = $("<a>", {
                             href: value.detailuri,
+                            target: "motrosportsreg",
                         });
                         regElement.append(link);
                         if (end > NOW) {
