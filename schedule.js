@@ -27,7 +27,7 @@ $.fn.generateSchedule = function(scheduleArray) {
 
     var eventsWithMsrIds = {};
     $.each(scheduleArray, function(key, value){ 
-        value.eventDateJs = new Date(value.eventDate);
+        value.eventDateJs = new Date(value.eventDate + " 08:00:00-0500");
         element.append(makeRow(value));
         if (value.eventDateJs > NOW && value.msr_id){
             eventsWithMsrIds[value.msr_id] = value;
