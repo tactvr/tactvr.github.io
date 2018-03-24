@@ -27,7 +27,7 @@ $.fn.generateSchedule = function(scheduleArray) {
 
     var eventsWithMsrIds = {};
     $.each(scheduleArray, function(key, value){ 
-        value.eventDateJs = new Date(value.eventDate + " 08:00:00-0500");
+        value.eventDateJs = new Date(value.eventDate + "T08:00:00-05:00");
         element.append(makeRow(value));
         if (value.eventDateJs > NOW && value.msr_id){
             eventsWithMsrIds[value.msr_id] = value;
@@ -106,6 +106,16 @@ function makeRow(rowData){
     return row;
 }
 
+function fixMessyMsrDateTimeString(input){
+    var year = input.substring(0, 4);
+    var month = input.substring(5, 7);
+    var day = input.substring(8, 10);
+    var hour = input.substring(11, 13);
+    var min = input.substring(14, 16)
+    var dateObject =  new Date(year, month, day, hour, min);
+    return dateObject;
+}
+
 function populateFromMsr(eventsWithMsrIds) {
     $.ajax('https://api.motorsportreg.com/rest/calendars/organization/2090ED02-A19B-3A7B-C58CBD1982CDCC4E.json?start=@YEAR@-01-01&end=@YEAR@-12-31'.replace(/@YEAR@/g, YEAR), {
         async: true,
@@ -117,8 +127,8 @@ function populateFromMsr(eventsWithMsrIds) {
                 var msrId = value.id;
                 if (eventsWithMsrIds[msrId]) {
                     var regElement = eventsWithMsrIds[msrId].registrationJqElement.html("");
-                    var start = new Date(value.registration.start + "-0000");
-                    var end = new Date(value.registration.end + "-0000");
+                    var start = fixMessyMsrDateTimeString(value.registration.start);
+                    var end = fixMessyMsrDateTimeString(value.registration.end);
                     if (start > NOW) {
                         regElement.text(
                             "Preregistration opens on " + start.toLocaleDateString()
