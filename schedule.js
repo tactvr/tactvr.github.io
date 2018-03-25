@@ -108,7 +108,7 @@ function makeRow(rowData){
 
 function fixMessyMsrDateTimeString(input){
     var year = input.substring(0, 4);
-    var month = input.substring(5, 7);
+    var month = parseInt(input.substring(5, 7)) - 1;
     var day = input.substring(8, 10);
     var hour = input.substring(11, 13);
     var min = input.substring(14, 16)
