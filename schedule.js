@@ -71,11 +71,11 @@ function populateRegistered(jqElement, msrEventGUID) {
 }
 
 function attachResultLinks(jqContainer, axwareName){
-    $("<a>", { href:"http://teamtac.org/archive/2018/autox/" + axwareName + "_fin.htm", text: "Final"}).appendTo(jqContainer);
+    $("<a>", { href:"//teamtac.org/archive/2018/autox/" + axwareName + "_fin.htm", text: "Final"}).appendTo(jqContainer);
     jqContainer.append(" - ");
-    $("<a>", { href:"http://teamtac.org/archive/2018/autox/" + axwareName + "_raw.htm", text: "Raw"}).appendTo(jqContainer);
+    $("<a>", { href:"//teamtac.org/archive/2018/autox/" + axwareName + "_raw.htm", text: "Raw"}).appendTo(jqContainer);
     jqContainer.append(" - ");
-    $("<a>", { href:"http://teamtac.org/archive/2018/autox/" + axwareName + "_pax.htm", text: "Pax"}).appendTo(jqContainer);
+    $("<a>", { href:"//teamtac.org/archive/2018/autox/" + axwareName + "_pax.htm", text: "Pax"}).appendTo(jqContainer);
 }
 
 function makeRow(rowData){
@@ -112,7 +112,7 @@ function fixMessyMsrDateTimeString(input){
     var day = input.substring(8, 10);
     var hour = input.substring(11, 13);
     var min = input.substring(14, 16)
-    var dateObject =  new Date(year, month, day, hour, min);
+    var dateObject =  new Date(Date.UTC(year, month, day, hour, min));
     return dateObject;
 }
 
