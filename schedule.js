@@ -1,7 +1,7 @@
 (function() {
 var NOW = new Date();
 //var NOW = new Date("2018-03-24");
-var YEAR = "2018";
+var YEAR = (new Date()).getFullYear();
 
 var COLUMN_CLASSES = [
     "pure-u-3-24",

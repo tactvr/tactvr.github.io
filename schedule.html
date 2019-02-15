@@ -7,20 +7,69 @@
 </head>
 <body>
 
+    <div class="pure-menu pure-menu-horizontal">
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link schedule-link" data-year="2019">2019</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link schedule-link" data-year="2018">2018</a></li>
+            <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                <a href="#" class="pure-menu-link">Older Schedules...</a>
+                <ul class="pure-menu-children">
+                    <li class="pure-menu-item"><a href="page.php?54" class="pure-menu-link">2017</a></li>
+                    <li class="pure-menu-item"><a href="page.php?53" class="pure-menu-link">2016</a></li>
+                    <li class="pure-menu-item"><a href="page.php?51" class="pure-menu-link">2015</a></li>
+                    <li class="pure-menu-item"><a href="page.php?42" class="pure-menu-link">2014</a></li>
+                    <li class="pure-menu-item"><a href="page.php?37" class="pure-menu-link">2013</a></li>
+                    <li class="pure-menu-item"><a href="page.php?36" class="pure-menu-link">2012</a></li>
+                    <li class="pure-menu-item"><a href="page.php?32" class="pure-menu-link">2011</a></li>
+                    <li class="pure-menu-item"><a href="page.php?30" class="pure-menu-link">2010</a></li>
+                    <li class="pure-menu-item"><a href="page.php?28" class="pure-menu-link">2009</a></li>
+                    <li class="pure-menu-item"><a href="page.php?25" class="pure-menu-link">2008</a></li>
+                    <li class="pure-menu-item"><a href="page.php?17" class="pure-menu-link">2007</a></li>
+                    <li class="pure-menu-item"><a href="page.php?11" class="pure-menu-link">2006</a></li>
+                    <li class="pure-menu-item"><a href="http://teamtac.org/archive/" class="pure-menu-link">Browse Archives...</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="schedule.js"></script> <!-- Loads from https://tactvr.github.io/ -->
 <script type="text/javascript">
 jQuery(function() {
-    var scheduledEvents = [
+var schedules = {
+  "2019": [
+        {name:"Bonus Autocross", displayDate: "January 26", eventDate: "2019-01-26", championship: false, axwareName: false, msr_id:"", },
+        {name:"Test and Tune", displayDate: "February 23", eventDate: "2019-02-23", championship: false, axwareName: false, msr_id:"", },
+        {name:"Performance Driving School", displayDate: "March 1-3", eventDate: "2019-03-03", championship: false, axwareName: false, msr_id:"E7A7E6F9-05BF-6FA9-FD7720EBC05276BC", },
+        {name:"Event #1", displayDate: "March 10", eventDate: "2019-03-10", championship: true, axwareName: false, msr_id:"", },
+        {name:"Event #2", displayDate: "April 6", eventDate: "2019-04-06", championship: true, axwareName: false, msr_id:"", },
+        {name:"Event #3", displayDate: "April 28", eventDate: "2019-04-28", championship: true, axwareName: false, msr_id:"", },
+        {name:"Event #4", displayDate: "May 19", eventDate: "2019-05-19", championship: true, axwareName: false, msr_id:"", },
+        {name:"Summer Test & Tune", displayDate: "June 8", eventDate: "2019-06-08", championship: false, axwareName: false, msr_id:"", },
+        {name:"Event #5", displayDate: "June 9", eventDate: "2019-06-09", championship: true, axwareName: false, msr_id:"", },
+        {name:"Street Survival", displayDate: "June 22", eventDate: "2019-06-22", championship: false, axwareName: false, msr_id:"", },
+        {name:"Event #6", displayDate: "July 21", eventDate: "2019-07-21", championship: true, axwareName: false, msr_id:"", },
+        {name:"Event #7", displayDate: "August 10", eventDate: "2019-08-10", championship: true, axwareName: false, msr_id:"", },
+        {name:"Street Survival", displayDate: "August 24", eventDate: "2019-08-24", championship: false, axwareName: false, msr_id:"", },
+        {name:"Advanced Autocross School", displayDate: "September 27-28", eventDate: "2019-09-27", championship: false, axwareName: false, msr_id:"", },
+        {name:"Event #8", displayDate: "September 29", eventDate: "2019-09-29", championship: true, axwareName: false, msr_id:"", },
+        {name:"Tour de Frank (Register using Event 9+10)", displayDate: "October 12-13", eventDate: "2019-10-12", championship: false, axwareName: false, msr_id:"", },
+        {name:"Event #9", displayDate: "October 12", eventDate: "2019-10-12", championship: true, axwareName: false, msr_id:"", },
+        {name:"Event #10", displayDate: "October 13", eventDate: "2019-10-13", championship: true, axwareName: false, msr_id:"", },
+        {name:"Event #11", displayDate: "November 3", eventDate: "2019-11-06", championship: true, axwareName: false, msr_id:"", },
+        {name:"Event #12 + Novice Championship", displayDate: "December 1", eventDate: "2019-12-01", championship: true, axwareName: false, msr_id:"", },
+
+    ],
+  "2018": [
         {name:"TAC Driving School", displayDate: "March 2-4", eventDate: "2018-03-04", championship: false, axwareName: "drivingschool", msr_id:"76C3279B-DE2E-7F6C-54007C4683640195", },
         {name:"Test and Tune", displayDate: "March 11", eventDate: "2018-03-11", championship: false, axwareName: false, msr_id:"A2EEFDEB-C28E-648D-144FBC04B0150B69", },
         {name:"Event #1", displayDate: "March 24", eventDate: "2018-03-24", championship: true,  axwareName: "slalom1", msr_id:"A5B3A41E-BCC7-E7A1-C4F98A8DE348CDD7", },
-        {name:"Event #2", displayDate: "April 14", eventDate: "2018-04-14", championship: true,  axwareName: "slalom2", msr_id:"82918A9F-A8FE-E1E0-B85958F55152AC50", },
+        {name:"Event #2 (canceled)", displayDate: "April 14", eventDate: "2018-04-14", championship: false,  axwareName: "", msr_id:"82918A9F-A8FE-E1E0-B85958F55152AC50", },
         {name:"Event #3", displayDate: "May 12", eventDate: "2018-05-12", championship: true,  axwareName: "slalom3", msr_id:"829F47E6-C499-E4E7-1B257AD1AA7916FE", },
         {name:"Event #4", displayDate: "June 2", eventDate: "2018-06-02", championship: true,  axwareName: "slalom4", msr_id:"EF22BEDF-923D-5F34-627035A57ADCE3B0", },
         {name:"Event #5", displayDate: "June 23", eventDate: "2018-06-23", championship: true,  axwareName: "slalom5", msr_id:"EF32D230-BD8F-750B-B58C6C6C129E5BC6", },
         {name:"Event #6", displayDate: "July 21", eventDate: "2018-07-21", championship: true,  axwareName: "slalom6", msr_id:"EF4421A8-CA98-A6AD-AB2AA4C45504FAE7", },
-        {name:"Tour de Frank", displayDate: "August 18-19", eventDate: "2018-08-19", championship: false,  axwareName: false, msr_id:"4537CC7F-AEA7-C052-ACC9AC41A24253C7", },
+        {name:"Tour de Frank", displayDate: "August 18-19", eventDate: "2018-08-19", championship: false,  axwareName: "tdf", msr_id:"4537CC7F-AEA7-C052-ACC9AC41A24253C7", },
         {name:"Event #7 (Register via Tour de Frank)", displayDate: "August 19", eventDate: "2018-08-19", championship: true,  axwareName: "slalom7", msr_id:"", },
         {name:"TAC Autocross School", displayDate: "September 29", eventDate: "2018-09-29", championship: false,  axwareName: false, msr_id:"", },
         {name:"Event #8", displayDate: "September 30", eventDate: "2018-09-30", championship: true,  axwareName: "slalom8", msr_id:"EF5D0000-DBA7-0953-C727F42615D7206E", },
@@ -28,8 +77,15 @@ jQuery(function() {
         {name:"Event #10", displayDate: "November 3", eventDate: "2018-11-03", championship: true,  axwareName: "slalom10", msr_id:"EF767879-EF18-AF08-95DBE8241BC908C9", },
         {name:"Event #11", displayDate: "November 17", eventDate: "2018-11-17", championship: true,  axwareName: "slalom11", msr_id:"EF83A250-B6CD-1079-92D92978A77C3707", },
         {name:"HoHoHoooo Event #12", displayDate: "December 1", eventDate: "2018-12-01", championship: true,  axwareName: "slalom12", msr_id:"EF8BE791-9F4C-131C-ED927D7689E710F7", },
-    ];
-    jQuery("#generateScheduleHere").generateSchedule(scheduledEvents);
+    ],
+};
+
+    jQuery(".schedule-link").on("click", function() { 
+        jQuery(".pure-menu-selected").removeClass("pure-menu-selected");
+        jQuery(this).parent().addClass("pure-menu-selected");
+        jQuery("#generateScheduleHere").generateSchedule(schedules[jQuery(this).data("year")]); 
+    });
+    jQuery(".schedule-link[data-year='2019']").click();
 });
 </script>
 
