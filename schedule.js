@@ -3,6 +3,8 @@ var NOW = new Date();
 //var NOW = new Date("2018-03-24");
 var YEAR = (new Date()).getFullYear();
 
+var MSR_CACHE = {};
+
 var COLUMN_CLASSES = [
     "pure-u-3-24",
     "pure-u-6-24",
@@ -58,16 +60,23 @@ function generateHeaderRow() {
 }
 
 function populateRegistered(jqElement, msrEventGUID) {
-    $.ajax('https://api.motorsportreg.com/rest/events/' + msrEventGUID + '/entrylist.json', {
-        async: true,
-        cache: false,
-        dataType: 'json',
-    }).done(
-        function(json){
-            jqElement.html("");
-            jqElement.append('[' + json.response.recordset.total + '&nbsp;registered]');
-        }
-    );
+    var afterAjax =  function(json){
+        jqElement.html("");
+        jqElement.append('[' + json.response.recordset.total + '&nbsp;registered]');
+    };
+    
+    if (typeof MSR_CACHE[msrEventGUID] !== 'undefined') {
+        afterAjax(MSR_CACHE[msrEventGUID]);
+    } else {
+        $.ajax('https://api.motorsportreg.com/rest/events/' + msrEventGUID + '/entrylist.json', {
+            async: true,
+            cache: false,
+            dataType: 'json',
+        }).done(function(json) {
+            MSR_CACHE[msrEventGUID] = json;
+            afterAjax(json);
+        });
+    }
 }
 
 function attachResultLinks(jqContainer, axwareName){
