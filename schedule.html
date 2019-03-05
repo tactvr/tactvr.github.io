@@ -40,8 +40,8 @@ jQuery(function() {
         "2019": [
             {name:"Bonus Autocross", displayDate: "January 26", eventDate: "2019-01-26", championship: false, axwareName: false, msr_id:"", },
             {name:"Test and Tune", displayDate: "February 23", eventDate: "2019-02-23", championship: false, axwareName: false, msr_id:"803405BC-00B9-6683-229D917FB0A15DE4", },
-            {name:"Performance Driving School", displayDate: "March 1-3", eventDate: "2019-03-03", championship: false, axwareName: false, msr_id:"E7A7E6F9-05BF-6FA9-FD7720EBC05276BC", },
-            {name:"Event #1", displayDate: "March 10", eventDate: "2019-03-10", championship: true, axwareName: false, msr_id:"", },
+            {name:"Performance Driving School", displayDate: "March 1-3", eventDate: "2019-03-03", championship: false, axwareName: 'school', msr_id:"E7A7E6F9-05BF-6FA9-FD7720EBC05276BC", },
+            {name:"Event #1", displayDate: "March 10", eventDate: "2019-03-10", championship: true, axwareName: "slalom1", msr_id:"17EEC906-B871-C074-AFD760462612B9AD", },
             {name:"Event #2", displayDate: "April 6", eventDate: "2019-04-06", championship: true, axwareName: false, msr_id:"", },
             {name:"Event #3", displayDate: "April 28", eventDate: "2019-04-28", championship: true, axwareName: false, msr_id:"", },
             {name:"Event #4", displayDate: "May 19", eventDate: "2019-05-19", championship: true, axwareName: false, msr_id:"", },
@@ -77,7 +77,7 @@ jQuery(function() {
             {name:"Event #11", displayDate: "November 17", eventDate: "2018-11-17", championship: true,  axwareName: "slalom11", msr_id:"EF83A250-B6CD-1079-92D92978A77C3707", },
             {name:"HoHoHoooo Event #12", displayDate: "December 1", eventDate: "2018-12-01", championship: true,  axwareName: "slalom12", msr_id:"EF8BE791-9F4C-131C-ED927D7689E710F7", },
         ],
-};
+    };
 
     jQuery(".schedule-link").on("click", function() { 
         jQuery(".pure-menu-selected").removeClass("pure-menu-selected");

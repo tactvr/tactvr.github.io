@@ -79,12 +79,12 @@ function populateRegistered(jqElement, msrEventGUID) {
     }
 }
 
-function attachResultLinks(jqContainer, axwareName){
-    $("<a>", { href:"//teamtac.org/archive/2018/autox/" + axwareName + "_fin.htm", text: "Final"}).appendTo(jqContainer);
+function attachResultLinks(jqContainer, axwareName, eventDateJs){
+    $("<a>", { href:"//teamtac.org/archive/" + eventDateJs.getFullYear() + "/autox/" + axwareName + "_fin.htm", text: "Final"}).appendTo(jqContainer);
     jqContainer.append(" - ");
-    $("<a>", { href:"//teamtac.org/archive/2018/autox/" + axwareName + "_raw.htm", text: "Raw"}).appendTo(jqContainer);
+    $("<a>", { href:"//teamtac.org/archive/" + eventDateJs.getFullYear() + "/autox/" + axwareName + "_raw.htm", text: "Raw"}).appendTo(jqContainer);
     jqContainer.append(" - ");
-    $("<a>", { href:"//teamtac.org/archive/2018/autox/" + axwareName + "_pax.htm", text: "Pax"}).appendTo(jqContainer);
+    $("<a>", { href:"//teamtac.org/archive/" + eventDateJs.getFullYear() + "/autox/" + axwareName + "_pax.htm", text: "Pax"}).appendTo(jqContainer);
 }
 
 function makeRow(rowData){
@@ -110,7 +110,7 @@ function makeRow(rowData){
     }).appendTo(row);
 
     if (rowData.eventDateJs <= NOW && rowData.axwareName) {
-        attachResultLinks(rowData.resultsJqElement, rowData.axwareName);
+        attachResultLinks(rowData.resultsJqElement, rowData.axwareName, rowData.eventDateJs);
     }
     return row;
 }
