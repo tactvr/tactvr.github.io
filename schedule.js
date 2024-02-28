@@ -44,7 +44,7 @@ function generateColorKey() {
     var element = $("<div>", { class:"centeringBlock"});
     $("<div>", { 
         class: "eventExample championshipEvent", 
-        text: "Event is part of the TAC/TVR Championship Series"}
+        text: "Event is part of the TAC Championship Series"}
     ).appendTo(element);
     return element;
 }
